@@ -1,19 +1,19 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class RawatObat extends CI_Controller {
+class RawatTindakan extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->load->model('rawatObatModel');
+		$this->load->model('rawatTindakanModel');
         $this->load->library(array('form_validation','email', 'session'));
         $this->load->helper(array('text', 'url', 'cookie', 'string'));
     }
 
 	// Function untuk menampilkan halaman pertama di pasien
 	public function index() {
-		$data['data_rawat_obat'] = $this->rawatObatModel->get_data();
-		$this->load->view('rawat_obat/rawatObat.php', $data);
+		$data['data_rawat_tindakan'] = $this->rawatTindakanModel->get_data();
+		$this->load->view('rawat_tindakan/rawatTindakan.php', $data);
 	}
 
 	// Function untuk menambah data pasien

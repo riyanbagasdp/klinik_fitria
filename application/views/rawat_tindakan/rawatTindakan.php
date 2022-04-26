@@ -262,7 +262,8 @@
 						</a>
 						<div class="collapse" id="ui-basic">
 							<ul class="nav flex-column sub-menu">
-								<li class="nav-item"> <a class="nav-link" href="rawat">Rawat</a></li>
+								<li class="nav-item"> <a class="nav-link"
+										href="rawat">Rawat</a></li>
 								<li class="nav-item"> <a class="nav-link"
 										href="pages/ui-features/dropdowns.html">Dropdowns</a></li>
 								<li class="nav-item"> <a class="nav-link"
@@ -352,7 +353,7 @@
 				</ul>
 			</nav>
 			<!-- partial -->
-			<div class="main-panel d-flex flex-column">
+			<div class="main-panel">
 				<div class="content-wrapper">
 					<div class="row">
 						<div class="col-lg-12 grid-margin stretch-card">
@@ -365,20 +366,22 @@
 										<table class="table table-hover" id="table">
 											<thead class="table-info">
 												<tr>
-													<th>ID Tindakan</th>
-													<th>Nama Tindakan</th>
-													<th>Biaya</th>
+													<th>ID Rawat Tindakan</th>
+													<th>ID Rawat</th>
+													<th>Nama Dokter</th>
+													<th>Harga</th>
 													<th>Aksi</th>
 												</tr>
 											</thead>
 											<tbody>
-												<?php foreach ($data as $row) { ?>
+												<?php foreach ($data_rawat_tindakan as $row) { ?>
 												<tr>
-													<td> <?php echo $row['id_tindakan']; ?> </td>
-													<td> <?php echo $row['nama_tindakan']; ?> </td>
-													<td> <?php echo 'Rp. '.$row['biaya']; ?> </td>
+													<td> <?php echo 'RO00'.$row['id_rawat_tindakan']; ?> </td>
+													<td> <?php echo $row['id_rawat']; ?> </td>
+													<td> <?php echo $row['nama_dokter']; ?> </td>
+													<td> <?php echo $row['harga']; ?> </td>
 													<td>
-														<a href="tindakan/edit/<?php echo $row['id_tindakan'];?>"
+														<a href="rawatobat/edit/<?php echo $row['id_rawat'];?>"
 															class="btn btn-warning">Edit</a>
 														<button class="btn btn-danger" data-bs-toggle="modal"
 															data-bs-target="#delete">Hapus</button>
@@ -396,30 +399,59 @@
 														<div class="col-12 grid-margin stretch-card">
 															<div class="card">
 																<div class="card-body">
-																	<h4 class="card-title">Tambah Tindakan</h4>
+																	<h4 class="card-title">Formulir Pasien</h4>
 																	<p class="card-description">
 																		Lorem ipsum dolor sit, amet consectetur
 																		adipisicing elit. Id, alias.
 																	</p>
 																	<form class="forms-sample"
-																		action="<?php echo base_url('tindakan/insert'); ?>"
+																		action="<?php echo base_url('rawat/insert'); ?>"
 																		method="POST">
 																		<div class="form-group">
-																			<label for="nama_tindakan">Nama
-																				Tindakan</label>
-																			<input type="text" class="form-control"
-																				name="nama_tindakan" required
-																				placeholder="Tindakan"
-																				oninvalid="this.setCustomValidity('Tindakan harus di isi!')"
+																			<label for="id_pasien">ID Pasien</label>
+																			<select class="form-control"
+																				name="id_pasien">
+																				<?php foreach($id_pasien as $id_pasien) { 
+								echo '<option value="'.$id_pasien->id_pasien.'">'.$id_pasien->id_pasien.'</option>';
+							} ?>
+																			</select>
+																		</div>
+																		<div class="form-group">
+																			<label for="tgl_rawat">Tanggal Rawat</label>
+																			<input type="date" class="form-control"
+																				name="tgl_rawat" required
+																				oninvalid="this.setCustomValidity('Nama harus di isi!')"
 																				oninput="this.setCustomValidity('')">
 																		</div>
 																		<div class="form-group">
-																			<label for="biaya">Biaya (Rp)</label>
-																			<input type="number" class="form-control"
-																				name="biaya" required
-																				placeholder="Rp."
-																				oninvalid="this.setCustomValidity('Biaya harus di isi!')"
+																			<label for="total_tindakan">Total
+																				Tindakan</label>
+																			<input type="text" class="form-control"
+																				name="total_tindakan" required
+																				oninvalid="this.setCustomValidity('Nama harus di isi!')"
 																				oninput="this.setCustomValidity('')">
+																		</div>
+																		<div class="form-group">
+																			<label for="total_obat">Total Obat</label>
+																			<input type="text" class="form-control"
+																				name="total_obat" required
+																				placeholder="Alamat"
+																				oninvalid="this.setCustomValidity('Alamat harus di isi!')"
+																				oninput="this.setCustomValidity('')">
+																		</div>
+																		<div class="form-group">
+																			<label for="uang_muka">Uang Muka</label>
+																			<input type="text" class="form-control"
+																				name="uang_muka" required
+																				oninvalid="this.setCustomValidity('Tanggal lahir pasien harus di isi!')"
+																				oninput="this.setCustomValidity('')">
+																		</div>
+																		<div class="form-group">
+																			<label for="kurang">Kurang</label>
+																			<input type="number" class="form-control"
+																				name="kurang"
+																				placeholder="+62 08X XXX XXX" min='10'
+																				value="+62 ">
 																		</div>
 																		<button type="submit"
 																			class="btn btn-primary me-2">Simpan</button>
@@ -449,7 +481,7 @@
 													<div class="modal-footer">
 														<button type="button" class="btn btn-secondary"
 															data-bs-dismiss="modal">Tidak</button>
-														<a href="tindakan/delete/<?php echo $row['id_tindakan'];?>"
+														<a href="pasien/delete/<?php echo $row['id_pasien'];?>"
 															type="button" class="btn btn-primary">Ya</a>
 													</div>
 												</div>
@@ -463,6 +495,17 @@
 					</div>
 				</div>
 				<!-- content-wrapper ends -->
+				<!-- partial:../../partials/_footer.html -->
+				<footer class="footer">
+					<div class="d-sm-flex justify-content-center justify-content-sm-between">
+						<span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Premium <a
+								href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from
+							BootstrapDash.</span>
+						<span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2021. All
+							rights reserved.</span>
+					</div>
+				</footer>
+				<!-- partial -->
 			</div>
 			<!-- main-panel ends -->
 		</div>

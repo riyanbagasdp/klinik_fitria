@@ -352,7 +352,7 @@
 				</ul>
 			</nav>
 			<!-- partial -->
-			<div class="main-panel d-flex flex-column">
+			<div class="main-panel">
 				<div class="content-wrapper">
 					<div class="row">
 						<div class="col-lg-12 grid-margin stretch-card">
@@ -376,7 +376,7 @@
 												<tr>
 													<td> <?php echo $row['id_tindakan']; ?> </td>
 													<td> <?php echo $row['nama_tindakan']; ?> </td>
-													<td> <?php echo 'Rp. '.$row['biaya']; ?> </td>
+													<td> <?php echo $row['biaya']; ?> </td>
 													<td>
 														<a href="tindakan/edit/<?php echo $row['id_tindakan'];?>"
 															class="btn btn-warning">Edit</a>
@@ -396,7 +396,7 @@
 														<div class="col-12 grid-margin stretch-card">
 															<div class="card">
 																<div class="card-body">
-																	<h4 class="card-title">Tambah Tindakan</h4>
+																	<h4 class="card-title">Formulir Pasien</h4>
 																	<p class="card-description">
 																		Lorem ipsum dolor sit, amet consectetur
 																		adipisicing elit. Id, alias.
@@ -409,15 +409,15 @@
 																				Tindakan</label>
 																			<input type="text" class="form-control"
 																				name="nama_tindakan" required
-																				placeholder="Tindakan"
+																				placeholder="Nama Pasien"
 																				oninvalid="this.setCustomValidity('Tindakan harus di isi!')"
 																				oninput="this.setCustomValidity('')">
 																		</div>
 																		<div class="form-group">
 																			<label for="biaya">Biaya (Rp)</label>
-																			<input type="number" class="form-control"
+																			<input type="text" class="form-control"
 																				name="biaya" required
-																				placeholder="Rp."
+																				placeholder="Biaya"
 																				oninvalid="this.setCustomValidity('Biaya harus di isi!')"
 																				oninput="this.setCustomValidity('')">
 																		</div>
@@ -449,7 +449,7 @@
 													<div class="modal-footer">
 														<button type="button" class="btn btn-secondary"
 															data-bs-dismiss="modal">Tidak</button>
-														<a href="tindakan/delete/<?php echo $row['id_tindakan'];?>"
+														<a href="pasien/delete/<?php echo $row['id_pasien'];?>"
 															type="button" class="btn btn-primary">Ya</a>
 													</div>
 												</div>
@@ -463,6 +463,17 @@
 					</div>
 				</div>
 				<!-- content-wrapper ends -->
+				<!-- partial:../../partials/_footer.html -->
+				<footer class="footer">
+					<div class="d-sm-flex justify-content-center justify-content-sm-between">
+						<span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Premium <a
+								href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from
+							BootstrapDash.</span>
+						<span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2021. All
+							rights reserved.</span>
+					</div>
+				</footer>
+				<!-- partial -->
 			</div>
 			<!-- main-panel ends -->
 		</div>
