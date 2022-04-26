@@ -381,7 +381,7 @@
 													<td> <?php echo $row['nama_dokter']; ?> </td>
 													<td> <?php echo $row['harga']; ?> </td>
 													<td>
-														<a href="rawatobat/edit/<?php echo $row['id_rawat'];?>"
+														<a href="rawatTindakan/edit/<?php echo $row['id_rawat_tindakan'];?>"
 															class="btn btn-warning">Edit</a>
 														<button class="btn btn-danger" data-bs-toggle="modal"
 															data-bs-target="#delete">Hapus</button>
@@ -451,7 +451,7 @@
 													<div class="modal-footer">
 														<button type="button" class="btn btn-secondary"
 															data-bs-dismiss="modal">Tidak</button>
-														<a href="pasien/delete/<?php echo $row['id_pasien'];?>"
+														<a href="rawatTindakan/delete/<?php echo $row['id_rawat_tindakan'];?>"
 															type="button" class="btn btn-primary">Ya</a>
 													</div>
 												</div>

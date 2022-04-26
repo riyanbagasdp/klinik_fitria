@@ -39,7 +39,41 @@ class RawatTindakan extends CI_Controller {
 		$this->rawatTindakanModel->insert_data($data, 'rawat_tindakan');
 		redirect(base_url('RawatTindakan'));
 	}
+	// Function untuk mengarahkan ke tampilan edit
+	public function edit($a) {
+		$data['data_rawat_tindakan'] = $this->rawatTindakanModel->edit_data($a);
+		$this->load->view('rawat_tindakan/edit', $data);
+	}
 
+	// Function untuk mengupdate data hasil dari tampilan edit
+	public function update($id_rawat_tindakan) {
+		$id_rawat = $this->input->post('nama_obat');
+		$id_tindakan = $this->input->post('harga');
+		$nama_dokter = $this->input->post('harga');
+		$harga = $this->input->post('harga');
+
+		$data = array(
+			'id_rawat ' => $id_rawat ,
+			'id_tindakan ' => $id_tindakan ,
+			'nama_dokter ' => $nama_dokter ,
+			'harga ' => $harga ,
+			
+		);		
+		// $nama_obat = $this->input->post('nama_obat');
+		// $harga = $this->input->post('harga'); 
+
+		// $data = array(
+		// 	'nama_obat' => $nama_obat,
+		// 	'harga' => $harga,
+		// );
+
+		$this->rawatTindakanModel->update_data($data, $id_rawat_tindakan);
+		redirect(base_url('rawatTindakan'));
+	}
+	public function delete($id_rawat_tindakan) {
+		$this->rawatTindakanModel->delete_data($id_rawat_tindakan);
+		redirect(base_url('rawatTindakan'));
+	}
 	// // Function untuk mengarahkan ke tampilan edit
 	// public function edit($a) {
     //     $data['data_pasien'] = $this->pasienModel->edit_data($a);
