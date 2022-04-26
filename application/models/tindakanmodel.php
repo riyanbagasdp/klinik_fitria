@@ -38,11 +38,6 @@ class tindakanmodel extends CI_Model {
         return $this->db->update('tindakans', $data);
     }
 
-    function delete($id_tindakan)
-    {
-        $this->db->where('id_tindakan', $id);
-        return $this->db->delete('tindakans');
-    }
 
     function get_keyword($keyword=null)
     {
@@ -54,7 +49,6 @@ class tindakanmodel extends CI_Model {
         return $this->db->get()->result_array();
     }
     
-}
 // class tindakanmodel extends CI_Model {
 
 //     function __construct()
@@ -93,11 +87,10 @@ class tindakanmodel extends CI_Model {
 //         return $this->db->update('tindakans', $data);
 //     }
 
-//     function delete($id_tindakan)
-//     {
-//         $this->db->where('id_tindakan', $id_tindakan);
-//         return $this->db->delete('tindakans');
-//     }
+    function delete($id_tindakan) {
+        $this->db->where('id_tindakan', $id_tindakan);
+        return $this->db->delete('tindakans');
+    }
 
 //     function get_keyword($keyword=null)
 //     {
@@ -108,3 +101,4 @@ class tindakanmodel extends CI_Model {
 //         }
 //         return $this->db->get()->result_array();
 //     }
+}

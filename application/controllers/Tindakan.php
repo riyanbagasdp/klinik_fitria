@@ -63,9 +63,9 @@ class Tindakan extends CI_Controller {
         }
     }
 
-    public function delete($id)
+    public function delete($id_tindakan)
     {
-        if ($this->tindakanmodel->delete($id)) {
+        if ($this->tindakanmodel->delete($id_tindakan)) {
             $this->session->set_flashdata('pesan', 'Data berhasil dihapus');
             redirect(base_url('tindakan'));
         }

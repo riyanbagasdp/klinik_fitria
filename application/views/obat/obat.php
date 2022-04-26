@@ -354,7 +354,7 @@
 			</nav>
 			<!-- partial -->
 			<div class="main-panel">
-				<div class="content-wrapper">
+				<div class="content-wrapper bg-dark">
 					<div class="row">
 						<div class="col-lg-12 grid-margin stretch-card">
 							<div class="card">
@@ -377,7 +377,7 @@
 												<tr>
 													<td> <?php echo $row['id_obat']; ?> </td>
 													<td> <?php echo $row['nama_obat']; ?> </td>
-													<td> <?php echo $row['harga']; ?> </td>
+													<td> <?php echo 'Rp. '.$row['harga']; ?> </td>
 													<td>
 														<a href="obat/edit/<?php echo $row['id_obat'];?>"
 															class="btn btn-warning">Edit</a>
