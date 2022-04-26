@@ -6,6 +6,8 @@ class RawatObat extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('rawatObatModel');
+		$this->load->model('rawatModel');
+		$this->load->model('obatmodel');
         $this->load->library(array('form_validation','email', 'session'));
         $this->load->helper(array('text', 'url', 'cookie', 'string'));
     }
@@ -13,6 +15,8 @@ class RawatObat extends CI_Controller {
 	// Function untuk menampilkan halaman pertama di pasien
 	public function index() {
 		$data['data_rawat_obat'] = $this->rawatObatModel->get_data();
+		$data['data_rawat'] = $this->rawatModel->get_data();
+		$data['data_obat'] = $this->obatmodel->get_data();
 		$this->load->view('rawat_obat/rawatObat.php', $data);
 	}
 

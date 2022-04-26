@@ -368,6 +368,7 @@
 												<tr>
 													<th>ID Rawat Obat</th>
 													<th>ID Rawat</th>
+													<th>ID Obat</th>
 													<th>Jumlah</th>
 													<th>Harga</th>
 													<th>Aksi</th>
@@ -376,8 +377,9 @@
 											<tbody>
 												<?php foreach ($data_rawat_obat as $row) { ?>
 												<tr>
-													<td> <?php echo 'RO00'.$row['id_rawat_obat']; ?> </td>
+													<td> <?php echo $row['id_rawat_obat']; ?> </td>
 													<td> <?php echo $row['id_rawat']; ?> </td>
+													<td> <?php echo $row['id_obat']; ?> </td>
 													<td> <?php echo $row['jumlah']; ?> </td>
 													<td> <?php echo $row['harga']; ?> </td>
 													<td>
@@ -399,59 +401,45 @@
 														<div class="col-12 grid-margin stretch-card">
 															<div class="card">
 																<div class="card-body">
-																	<h4 class="card-title">Formulir Pasien</h4>
+																	<h4 class="card-title">Formulir Rawat Obat</h4>
 																	<p class="card-description">
 																		Lorem ipsum dolor sit, amet consectetur
 																		adipisicing elit. Id, alias.
 																	</p>
 																	<form class="forms-sample"
-																		action="<?php echo base_url('rawat/insert'); ?>"
+																		action="<?php echo base_url('rawatobat/insert'); ?>"
 																		method="POST">
 																		<div class="form-group">
-																			<label for="id_pasien">ID Pasien</label>
+																			<label for="id_rawat">ID Rawat</label>
 																			<select class="form-control"
-																				name="id_pasien">
-																				<?php foreach($id_pasien as $id_pasien) { 
-								echo '<option value="'.$id_pasien->id_pasien.'">'.$id_pasien->id_pasien.'</option>';
+																				name="id_rawat">
+																				<?php foreach($data_rawat as $row) { 
+								echo '<option value="'.$row['id_rawat'].'">'.$row['id_rawat'].'</option>';
 							} ?>
 																			</select>
 																		</div>
 																		<div class="form-group">
-																			<label for="tgl_rawat">Tanggal Rawat</label>
-																			<input type="date" class="form-control"
-																				name="tgl_rawat" required
-																				oninvalid="this.setCustomValidity('Nama harus di isi!')"
-																				oninput="this.setCustomValidity('')">
-																		</div>
+																			<label for="id_obat">ID Obat</label>
+																			<select class="form-control"
+																				name="id_obat">
+																				<?php foreach($data_obat as $row) { 
+								echo '<option value="'.$row['id_obat'].'">'.$row['id_obat'].'</option>';
+							}?>
 																		<div class="form-group">
-																			<label for="total_tindakan">Total
-																				Tindakan</label>
+																			<label for="total_tindakan">Jumlah</label>
 																			<input type="text" class="form-control"
 																				name="total_tindakan" required
 																				oninvalid="this.setCustomValidity('Nama harus di isi!')"
 																				oninput="this.setCustomValidity('')">
 																		</div>
+
 																		<div class="form-group">
-																			<label for="total_obat">Total Obat</label>
-																			<input type="text" class="form-control"
-																				name="total_obat" required
-																				placeholder="Alamat"
-																				oninvalid="this.setCustomValidity('Alamat harus di isi!')"
-																				oninput="this.setCustomValidity('')">
-																		</div>
-																		<div class="form-group">
-																			<label for="uang_muka">Uang Muka</label>
-																			<input type="text" class="form-control"
-																				name="uang_muka" required
-																				oninvalid="this.setCustomValidity('Tanggal lahir pasien harus di isi!')"
-																				oninput="this.setCustomValidity('')">
-																		</div>
-																		<div class="form-group">
-																			<label for="kurang">Kurang</label>
-																			<input type="number" class="form-control"
-																				name="kurang"
-																				placeholder="+62 08X XXX XXX" min='10'
-																				value="+62 ">
+																			<label for="harga">Harga</label>
+																			<select class="form-control"
+																				name="harga">
+																				<?php foreach($data_obat as $row) { 
+								echo '<option value="'.$row['harga'].'">'.$row['harga'].'</option>';
+							}?>
 																		</div>
 																		<button type="submit"
 																			class="btn btn-primary me-2">Simpan</button>
