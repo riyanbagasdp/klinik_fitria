@@ -83,8 +83,15 @@ class Pasien extends CI_Controller {
 		redirect(base_url('pasien'));
     }
 
+	// public function delete($id_pasien) {
+	// 	$this->pasienModel->delete_data($id_pasien);
+	// 	redirect(base_url('pasien'));
+	// }
+
 	public function delete($id_pasien) {
-		$this->pasienModel->delete_data($id_pasien);
-		redirect(base_url('pasien'));
+		if($this->pasienModel->delete_data($id_pasien)) {
+			$this->session->set_flashdata('pesan', 'Data berhasil di hapus');
+			redirect(base_url('pasien'));
+		}
 	}
 }

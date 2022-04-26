@@ -436,8 +436,9 @@
 																			<label for="no_telp">No. Telp/Hp</label>
 																			<input type="number" class="form-control"
 																				name="no_telp"
-																				placeholder="+62 08X XXX XXX" min='10'
-																				value="+62 ">
+																				placeholder="+62 08X XXX XXX" min='10' required
+																				oninvalid="this.setCustomValidity('Nomor HP pasien harus di isi!')"
+																				oninput="this.setCustomValidity('')">
 																		</div>
 																		<button type="submit"
 																			class="btn btn-primary me-2">Simpan</button>
