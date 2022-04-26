@@ -20,28 +20,20 @@ class Usermodel extends CI_Model {
 		return $this->db->get('users')->row_array();
 	}
 
-	function insert($a) {
-        $data = [
-            'nama' => $a['nama'],
-            'email' => $a['email'],
-            'password' => $a['password'],
-            'alamat' => $a['alamat'],
-            'telepon' => $a['telepon']
-        ];
-        return $this->db->insert('users', $data);
-    }
+	// function insert($a) {
+    //     $data = [
+	// 		'id' => $a ['id']
+    //         'nama' => $a['nama'],
+    //         'email' => $a['email'],
+    //         'password' => $a['password'],
+    //         'alamat' => $a['alamat'],
+    //         'telepon' => $a['telepon']
+    //     ];
+	// 	$this->db->insert('users', $data);
+	// 	return $this->db->update('users');
+    // }
 
-	function update($a, $id) {
-		$data = [
-            'nama' => $a['nama'],
-            'email' => $a['email'],
-            'password' => $a['password'],
-            'alamat' => $a['alamat'],
-            'telepon' => $a['telepon']
-        ];
-		$this->db->where('id', $id);
-        return $this->db->update('users', $data);
-	}
+	
 	
 	function delete($id) {
 		$this->db->where('id', $id);
@@ -70,7 +62,32 @@ class Usermodel extends CI_Model {
 		$this->db->where('email', $email);
         return $this->db->update('users', $data);
 	}
+	function insert_data($a)
+    {
+		$data = [
+			// 'id' => $a ['id'],
+            'nama' => $a['nama'],
+            'email' => $a['email'],
+            'password' => $a['password'],
+            'alamat' => $a['alamat'],
+            'telepon' => $a['telepon']
+        ];
+		return $this->db->insert('users', $data);
+		// $this->db->set($data);
+		// return $this->db->update('users');
+    }
+	function update_data($a, $id) {
+		$data = [
 
+            'nama' => $a['nama'],
+            'email' => $a['email'],
+            'password' => $a['password'],
+            'alamat' => $a['alamat'],
+            'telepon' => $a['telepon']
+        ];
+		$this->db->where('id', $id);
+        return $this->db->update('users', $data);
+	}
 	// function get_detail_by_cookie($cookie) {
 	// 	$data = [
 	// 		'cookie' => $cookie

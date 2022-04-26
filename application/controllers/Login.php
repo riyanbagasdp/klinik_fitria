@@ -43,6 +43,47 @@ class Login extends CI_Controller {
 			redirect(base_url('login'));
 		}
 	}
+	public function register(){
+		$this->load->view('login/register');
+	}
+	public function insert(){
+		// $id = $this->input->post('id');
+		$nama = $this->input->post('nama');
+		$email = $this->input->post('email');
+		$password = md5($this->input->post('password'));
+		$alamat = $this->input->post('alamat');
+		$telepon = $this->input->post('telepon');
+
+		$data = array(
+			// 'id' => $id,
+			'nama' => $nama,
+			'email' => $email,
+			'password' => $password,
+			'alamat' => $alamat,
+			'telepon' => $telepon,
+		);
+		$this->usermodel->insert_data($data, 'users');
+		// $this->set($data);
+		redirect(base_url('login'));
+	}
+	public function update($id) {
+		$nama = $this->input->post('nama');
+		$email = $this->input->post('email');
+		$password = $this->input->post('password');
+		$alamat = $this->input->post('alamat');
+		$telepon = $this->input->post('telepon');
+
+		$data = array(
+			'nama' => $nama,
+			'email' => $email,
+			'password' => $password,
+			'alamat' => $alamat,
+			'telepon' => $telepon,
+		);		
+		$this->usermodel->update_data($data, $id);
+		redirect(base_url('login'));
+	}
+
 
 	public function logout() {
 		delete_cookie('tigaserangkai');

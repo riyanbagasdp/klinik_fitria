@@ -31,7 +31,6 @@ class tindakanmodel extends CI_Model {
     function update($a, $id_tindakan)
     {
         $data = [
-                
                 'nama_tindakan' => $a['nama_tindakan'],
                 'biaya' => $a['biaya'],
         ];
