@@ -447,7 +447,7 @@
 													<div class="modal-footer">
 														<button type="button" class="btn btn-secondary"
 															data-bs-dismiss="modal">Tidak</button>
-														<a href="pasien/delete/<?php echo $row['id_obat'];?>"
+														<a href="obat/delete/<?php echo $row['id_obat'];?>"
 															type="button" class="btn btn-primary">Ya</a>
 													</div>
 												</div>

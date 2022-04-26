@@ -359,7 +359,7 @@
 						<div class="col-lg-12 grid-margin stretch-card">
 							<div class="card">
 								<div class="card-body">
-									<h4 class="card-title">Data Pasien</h4>
+									<h4 class="card-title">Data Rawat</h4>
 									<button class="btn btn-primary mb-3" data-bs-toggle="modal"
 										data-bs-target="#add">Tambah</button>
 									<div class="table-responsive">
