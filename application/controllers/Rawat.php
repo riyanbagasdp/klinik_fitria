@@ -79,6 +79,11 @@ class Rawat extends CI_Controller {
 		redirect(base_url('pasien'));
     }
 
+	public function detail($id_pasien) {
+		$data['data_rawat'] = $this->rawatModel->get_detail($id_pasien);
+        $this->load->view('rawat/detail', $data);
+	}
+
 	public function delete($id_pasien) {
 		$this->pasienModel->delete_data($id_pasien);
 		redirect(base_url('pasien'));

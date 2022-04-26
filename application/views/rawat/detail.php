@@ -359,10 +359,32 @@
             <div class="col-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Formulir Pasien</h4>
+                  <h4 class="card-title">Data Pasien</h4>
                   <p class="card-description">
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id, alias.
                   </p>
+									<div class="table-responsive">
+									<table class="table table-hover" id="table">
+											<thead class="table-info">
+												<tr>
+													<th>ID Rawat</th>
+													<th>ID Pasien</th>
+													<th>Tanggal Rawat</th>
+													<th>Uang Muka</th>
+												</tr>
+											</thead>
+											<tbody>
+												<?php foreach ($data_rawat as $row) { ?>
+												<tr>
+													<td> <?php echo $row['id_rawat']; ?> </td>
+													<td> <?php echo $row['id_pasien']; ?> </td>
+													<td> <?php echo $row['tgl_rawat']; ?> </td>
+													<td> <?php echo $row['uang_muka']; ?> </td>
+												</tr>
+												<?php } ?>
+											</tbody>
+										</table>
+									</div>
                   <form class="forms-sample" action="<?php echo base_url('rawat/update/'.$data_rawat['id_rawat']) ?>" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                       <label for="id_rawat">ID Rawat</label>

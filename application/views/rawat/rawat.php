@@ -262,8 +262,7 @@
 						</a>
 						<div class="collapse" id="ui-basic">
 							<ul class="nav flex-column sub-menu">
-								<li class="nav-item"> <a class="nav-link"
-										href="rawat">Rawat</a></li>
+								<li class="nav-item"> <a class="nav-link" href="rawat">Rawat</a></li>
 								<li class="nav-item"> <a class="nav-link"
 										href="pages/ui-features/dropdowns.html">Dropdowns</a></li>
 								<li class="nav-item"> <a class="nav-link"
@@ -380,13 +379,15 @@
 												<?php foreach ($data_rawat as $row) { ?>
 												<tr>
 													<td> <?php echo $row['id_rawat']; ?> </td>
-													<td> <?php echo 'PN00'.$row['id_pasien']; ?> </td>
+													<td> <?php echo $row['id_pasien']; ?> </td>
 													<td> <?php echo $row['tgl_rawat']; ?> </td>
 													<td> <?php echo $row['total_tindakan']; ?> </td>
 													<td> <?php echo $row['total_obat']; ?> </td>
 													<td> <?php echo $row['uang_muka']; ?> </td>
 													<td> <?php echo $row['kurang']; ?> </td>
 													<td>
+														<a href="rawat/detail/<?php echo $row['id_rawat'];?>"
+															class="btn btn-success">Detail</a>
 														<a href="rawat/edit/<?php echo $row['id_rawat'];?>"
 															class="btn btn-warning">Edit</a>
 														<button class="btn btn-danger" data-bs-toggle="modal"
@@ -415,8 +416,10 @@
 																		method="POST">
 																		<div class="form-group">
 																			<label for="id_pasien">ID Pasien</label>
-																			<select class="form-control" name="id_pasien">
-																				<option value="" selected>Pilih salah satu</option>
+																			<select class="form-control"
+																				name="id_pasien">
+																				<option value="" selected>Pilih salah
+																					satu</option>
 																				<?php foreach($data_pasien as $pasien) { echo '<option value="'.$pasien['id'].'">'.$pasien['nama_pasien'].'</option>';} ?>
 																			</select>
 																		</div>
@@ -428,7 +431,8 @@
 																				oninput="this.setCustomValidity('')">
 																		</div>
 																		<div class="form-group">
-																			<label for="uang_muka">Uang Muka (Rp)</label>
+																			<label for="uang_muka">Uang Muka
+																				(Rp)</label>
 																			<input type="number" class="form-control"
 																				name="uang_muka" required
 																				oninvalid="this.setCustomValidity('Uang Muka harus di isi!')"

@@ -453,7 +453,6 @@
 					{data: 'iddokter'},
 					{data: 'namadokter'},
 				],
-				// scrollY: 200,
 			});
 		});
 

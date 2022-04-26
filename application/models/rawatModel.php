@@ -32,9 +32,9 @@ class rawatModel extends CI_Model {
 
 
 	public function edit_data($a) {
-		$query = $this->db->query("SELECT * FROM pasiens");
-		$this->db->where('id_pasien', $a);
-		return $this->db->get('pasiens')->row_array();
+		$this->db->query("SELECT * FROM rawats");
+		$this->db->where('id_rawat', $a);
+		return $this->db->get('rawats')->row_array();
 	}
 
 	public function update_data($a, $id_pasien) {
@@ -46,6 +46,12 @@ class rawatModel extends CI_Model {
 		];
 		$this->db->where('id_pasien', $id_pasien);
         return $this->db->update('pasiens', $data);
+	}
+	
+	public function get_detail($id_pasien) {
+		$this->db->query("SELECT * FROM rawats");
+		$this->db->where('id_pasien', $id_pasien);
+		return $this->db->get('rawats')->row_array();	
 	}
 
 	public function delete_data($id_pasien) {
