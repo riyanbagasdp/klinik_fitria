@@ -415,11 +415,9 @@
 																		method="POST">
 																		<div class="form-group">
 																			<label for="id_pasien">ID Pasien</label>
-																			<select class="form-control"
-																				name="id_pasien">
-																				<?php foreach($id_pasien as $id_pasien) { 
-								echo '<option value="'.$id_pasien->id_pasien.'">'.$id_pasien->id_pasien.'</option>';
-							} ?>
+																			<select class="form-control" name="id_pasien">
+																				<option value="" selected>Pilih salah satu</option>
+																				<?php foreach($data_pasien as $pasien) { echo '<option value="'.$pasien['id'].'">'.$pasien['nama_pasien'].'</option>';} ?>
 																			</select>
 																		</div>
 																		<div class="form-group">
@@ -430,34 +428,11 @@
 																				oninput="this.setCustomValidity('')">
 																		</div>
 																		<div class="form-group">
-																			<label for="total_tindakan">Total
-																				Tindakan</label>
-																			<input type="text" class="form-control"
-																				name="total_tindakan" required
-																				oninvalid="this.setCustomValidity('Nama harus di isi!')"
-																				oninput="this.setCustomValidity('')">
-																		</div>
-																		<div class="form-group">
-																			<label for="total_obat">Total Obat</label>
-																			<input type="text" class="form-control"
-																				name="total_obat" required
-																				placeholder="Alamat"
-																				oninvalid="this.setCustomValidity('Alamat harus di isi!')"
-																				oninput="this.setCustomValidity('')">
-																		</div>
-																		<div class="form-group">
-																			<label for="uang_muka">Uang Muka</label>
-																			<input type="text" class="form-control"
-																				name="uang_muka" required
-																				oninvalid="this.setCustomValidity('Tanggal lahir pasien harus di isi!')"
-																				oninput="this.setCustomValidity('')">
-																		</div>
-																		<div class="form-group">
-																			<label for="kurang">Kurang</label>
+																			<label for="uang_muka">Uang Muka (Rp)</label>
 																			<input type="number" class="form-control"
-																				name="kurang"
-																				placeholder="+62 08X XXX XXX" min='10'
-																				value="+62 ">
+																				name="uang_muka" required
+																				oninvalid="this.setCustomValidity('Uang Muka harus di isi!')"
+																				oninput="this.setCustomValidity('')">
 																		</div>
 																		<button type="submit"
 																			class="btn btn-primary me-2">Simpan</button>

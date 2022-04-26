@@ -373,7 +373,7 @@
                       <input type="text" class="form-control" name="nama_obat" placeholder="Nama Obat" value="<?php echo $data_obat['nama_obat'] ?>">
                     </div>
                     <div class="form-group">
-                      <label for="harga">Harga</label>
+                      <label for="harga">Harga (Rp)</label>
                       <input type="number" class="form-control" name="harga" placeholder="Rp." value="<?php echo $data_obat['harga'] ?>">
                     </div>
                     <button type="submit" class="btn btn-primary me-2">Simpan</button>

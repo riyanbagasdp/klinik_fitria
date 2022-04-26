@@ -28,6 +28,7 @@ class Pasien extends CI_Controller {
 	// Function untuk menambah data pasien
 	public function insert() {
 		$id = $this->input->post('id');
+		var_dump($id);		
 		$id_pasien = "PN00";
 		$nama_pasien = $this->input->post('nama_pasien');
 		$alamat = $this->input->post('alamat');

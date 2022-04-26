@@ -359,7 +359,7 @@
 						<div class="col-lg-12 grid-margin stretch-card">
 							<div class="card">
 								<div class="card-body">
-									<h4 class="card-title">Data Pasien</h4>
+									<h4 class="card-title">Data Rawat Tindakan</h4>
 									<button class="btn btn-primary mb-3" data-bs-toggle="modal"
 										data-bs-target="#add">Tambah</button>
 									<div class="table-responsive">
@@ -376,7 +376,7 @@
 											<tbody>
 												<?php foreach ($data_rawat_tindakan as $row) { ?>
 												<tr>
-													<td> <?php echo 'RO00'.$row['id_rawat_tindakan']; ?> </td>
+													<td> <?php echo $row['id_rawat_tindakan']; ?> </td>
 													<td> <?php echo $row['id_rawat']; ?> </td>
 													<td> <?php echo $row['nama_dokter']; ?> </td>
 													<td> <?php echo $row['harga']; ?> </td>
@@ -404,54 +404,24 @@
 																		Lorem ipsum dolor sit, amet consectetur
 																		adipisicing elit. Id, alias.
 																	</p>
-																	<form class="forms-sample"
-																		action="<?php echo base_url('rawat/insert'); ?>"
-																		method="POST">
+																	<form class="forms-sample" action="<?php echo base_url('rawatTindakan/insert'); ?>" method="POST">
 																		<div class="form-group">
-																			<label for="id_pasien">ID Pasien</label>
-																			<select class="form-control"
-																				name="id_pasien">
-																				<?php foreach($id_pasien as $id_pasien) { 
-								echo '<option value="'.$id_pasien->id_pasien.'">'.$id_pasien->id_pasien.'</option>';
-							} ?>
+																			<label for="id_rawat">ID Rawat</label>
+																			<select class="form-control" name="id_rawat">
+																				<?php foreach($id_rawat as $id_rawat) { echo '<option value="'.$id_rawat['id_rawat'].'">'.$id_rawat['id_rawat'].'</option>';} ?>
 																			</select>
 																		</div>
 																		<div class="form-group">
-																			<label for="tgl_rawat">Tanggal Rawat</label>
-																			<input type="date" class="form-control"
-																				name="tgl_rawat" required
-																				oninvalid="this.setCustomValidity('Nama harus di isi!')"
-																				oninput="this.setCustomValidity('')">
+																			<label for="dokter">Dokter</label>
+																			<select class="form-control"name="dokter" id="dokter">
+																				<option value=""></option>
+																			</select>
 																		</div>
 																		<div class="form-group">
-																			<label for="total_tindakan">Total
-																				Tindakan</label>
-																			<input type="text" class="form-control"
-																				name="total_tindakan" required
-																				oninvalid="this.setCustomValidity('Nama harus di isi!')"
-																				oninput="this.setCustomValidity('')">
-																		</div>
-																		<div class="form-group">
-																			<label for="total_obat">Total Obat</label>
-																			<input type="text" class="form-control"
-																				name="total_obat" required
-																				placeholder="Alamat"
-																				oninvalid="this.setCustomValidity('Alamat harus di isi!')"
-																				oninput="this.setCustomValidity('')">
-																		</div>
-																		<div class="form-group">
-																			<label for="uang_muka">Uang Muka</label>
-																			<input type="text" class="form-control"
-																				name="uang_muka" required
-																				oninvalid="this.setCustomValidity('Tanggal lahir pasien harus di isi!')"
-																				oninput="this.setCustomValidity('')">
-																		</div>
-																		<div class="form-group">
-																			<label for="kurang">Kurang</label>
-																			<input type="number" class="form-control"
-																				name="kurang"
-																				placeholder="+62 08X XXX XXX" min='10'
-																				value="+62 ">
+																			<label for="harga">Harga (Rp)</label>
+																			<select class="form-control" name="harga">
+																				<?php foreach($tindakan as $biaya) { echo '<option value="'.$biaya['biaya'].'">'.$biaya['biaya'].'</option>';} ?>
+																			</select>
 																		</div>
 																		<button type="submit"
 																			class="btn btn-primary me-2">Simpan</button>
@@ -538,32 +508,22 @@
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script>
-		$(document).ready(function () {
-			// 	$.ajax({
-			// 		url: "https://rosihanari.net/api/api.php?get=dokter",
-			// 		type: "GET",
-			// 		dataType: "json",
-			// 		success: function(result) {
-			// 			result.forEach(element => {
-			// 				const tr = document.createElement("tr");
-			// 				const td = document.createElement("td");
-			// 				td.innerHTML = element.iddokter;
-			// 				tr.appendChild(td);
-			// 				const td2 = document.createElement("td");
-			// 				td2.innerHTML = element.namadokter;
-			// 				tr.appendChild(td2);
-			// 				document.getElementById("dokter").appendChild(tr);
-			// 			});
-			// 		}
-			// 	})
-			// });
+				$.ajax({
+					url: "https://rosihanari.net/api/api.php?get=dokter",
+					type: "GET",
+					dataType: "json",
+					success: function(result) {
 
-			$('#table').DataTable({
-				processing: true,
-				ordering: false,
-			});
-		});
+						result.forEach(element => {
+							const dokter = document.getElementById('dokter');
+							const option = document.createElement('option');
+							option.innerText = element.namadokter;
+							option.value = element.namadokter;
 
+							dokter.appendChild(option);
+						});
+					}
+				})
 	</script>
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script cript src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>

@@ -362,31 +362,7 @@
 									<button class="btn btn-primary mb-3" data-bs-toggle="modal"
 										data-bs-target="#add">Tambah</button>
 									<div class="table-responsive">
-										<table class="table table-hover" id="table">
-											<thead class="table-info">
-												<tr>
-													<th>ID Tindakan</th>
-													<th>Nama Tindakan</th>
-													<th>Biaya</th>
-													<th>Aksi</th>
-												</tr>
-											</thead>
-											<tbody>
-												<?php foreach ($data as $row) { ?>
-												<tr>
-													<td> <?php echo $row['id_tindakan']; ?> </td>
-													<td> <?php echo $row['nama_tindakan']; ?> </td>
-													<td> <?php echo $row['biaya']; ?> </td>
-													<td>
-														<a href="tindakan/edit/<?php echo $row['id_tindakan'];?>"
-															class="btn btn-warning">Edit</a>
-														<button class="btn btn-danger" data-bs-toggle="modal"
-															data-bs-target="#delete">Hapus</button>
-													</td>
-												</tr>
-												<?php } ?>
-											</tbody>
-										</table>
+										
 										<!-- Modal -->
 										<div class="modal fade" id="add" tabindex="-1"
 											aria-labelledby="exampleModalLabel" aria-hidden="true">
