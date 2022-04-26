@@ -365,7 +365,7 @@
 						<div class="col-12 grid-margin stretch-card">
 							<div class="card">
 								<div class="card-body">
-									<h4 class="card-title">Formulir Pasien</h4>
+									<h4 class="card-title fs-1 fw-bolder">Ubah Data Obat</h4>
 									<p class="card-description">
 										Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id, alias.
 									</p>

@@ -29,7 +29,7 @@ class Pasien extends CI_Controller {
 	public function insert() {
 		$id = $this->input->post('id');
 		var_dump($id);		
-		$id_pasien = "PN00";
+		$id_pasien = "PSN00";
 		$nama_pasien = $this->input->post('nama_pasien');
 		$alamat = $this->input->post('alamat');
 		$tgl_lahir = $this->input->post('tgl_lahir');  
@@ -58,17 +58,6 @@ class Pasien extends CI_Controller {
 
 	// Function untuk mengupdate data hasil dari tampilan edit
     public function update($id_pasien) {
-		$nama_pasien = $this->input->post('nama_pasien');
-		$alamat = $this->input->post('alamat');
-		$tgl_lahir = $this->input->post('tgl_lahir');  
-		$no_telp = $this->input->post('no_telp');  
-
-		$data = array(
-			'nama_pasien' => $nama_pasien,
-			'alamat' => $alamat,
-			'tgl_lahir' => $tgl_lahir,
-			'no_telp' => $no_telp,
-		);		
 		$nama_pasien = $this->input->post('nama_pasien');
 		$alamat = $this->input->post('alamat');
 		$tgl_lahir = $this->input->post('tgl_lahir');  

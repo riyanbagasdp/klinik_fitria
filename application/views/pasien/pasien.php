@@ -12,7 +12,6 @@
 		.pagination {
 			float: right;
 		}
-
 	</style>
 
 	<!-- plugins:css -->
@@ -362,13 +361,12 @@
 			<!-- partial -->
 			<div class="main-panel">
 				<div class="content-wrapper">
-				<?php if ($this->session->flashdata('pesan') != '') { ?>
-										<div class="alert alert-success alert-dismissible fade show" role="alert">
-											<?php echo $this->session->flashdata('pesan'); ?>
-											<button type="button" class="btn-close" data-bs-dismiss="alert"
-												aria-label="Close"></button>
-										</div>
-										<?php } ?>
+					<?php if ($this->session->flashdata('pesan') != '') { ?>
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						<?php echo $this->session->flashdata('pesan'); ?>
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+					<?php } ?>
 					<div class="row">
 						<div class="col grid-margin stretch-card">
 							<div class="card">
@@ -399,7 +397,8 @@
 														<td>
 															<a href="pasien/edit/<?php echo $row['id_pasien'];?>"
 																class="btn btn-warning py-3 px-4">Edit</a>
-															<button class="btn btn-danger py-3 px-4" data-bs-toggle="modal"
+															<button class="btn btn-danger py-3 px-4"
+																data-bs-toggle="modal"
 																data-bs-target="#delete">Hapus</button>
 														</td>
 													</tr>

@@ -5,8 +5,15 @@
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Star Admin2 </title>
+	<title>Klinik Fitria</title>
 
+	<style>
+		.dataTables_filter,
+		.pagination {
+			float: right;
+		}
+
+	</style>
 	<!-- plugins:css -->
 	<link rel="stylesheet" href="<?php echo base_url('assets/vendors/feather/feather.css') ?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/vendors/mdi/css/materialdesignicons.min.css') ?>">
@@ -262,8 +269,7 @@
 						</a>
 						<div class="collapse" id="ui-basic">
 							<ul class="nav flex-column sub-menu">
-								<li class="nav-item"> <a class="nav-link"
-										href="rawat">Rawat</a></li>
+								<li class="nav-item"> <a class="nav-link" href="rawat">Rawat</a></li>
 								<li class="nav-item"> <a class="nav-link"
 										href="<?php echo base_url('RawatTindakan') ?>">Rawat Tindakan</a></li>
 								<li class="nav-item"> <a class="nav-link"
@@ -355,11 +361,17 @@
 			<!-- partial -->
 			<div class="main-panel d-flex flex-column">
 				<div class="content-wrapper">
+					<?php if ($this->session->flashdata('pesan') != '') { ?>
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						<?php echo $this->session->flashdata('pesan'); ?>
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+					<?php } ?>
 					<div class="row">
-						<div class="col-lg-12 grid-margin stretch-card">
+						<div class="col grid-margin stretch-card">
 							<div class="card">
 								<div class="card-body">
-									<h4 class="card-title">Data Tindakan</h4>
+									<h4 class="card-title fs-1 fw-bolder">Data Tindakan</h4>
 									<button class="btn btn-primary mb-3" data-bs-toggle="modal"
 										data-bs-target="#add">Tambah</button>
 									<div class="table-responsive">
@@ -380,8 +392,8 @@
 													<td> <?php echo 'Rp. '.$row['biaya']; ?> </td>
 													<td>
 														<a href="tindakan/edit/<?php echo $row['id_tindakan'];?>"
-															class="btn btn-warning">Edit</a>
-														<button class="btn btn-danger" data-bs-toggle="modal"
+															class="btn btn-warning px-4 py-3">Edit</a>
+														<button class="btn btn-danger px-4 py-3" data-bs-toggle="modal"
 															data-bs-target="#delete">Hapus</button>
 													</td>
 												</tr>
@@ -417,8 +429,7 @@
 																		<div class="form-group">
 																			<label for="biaya">Biaya (Rp)</label>
 																			<input type="number" class="form-control"
-																				name="biaya" required
-																				placeholder="Rp."
+																				name="biaya" required placeholder="Rp."
 																				oninvalid="this.setCustomValidity('Biaya harus di isi!')"
 																				oninput="this.setCustomValidity('')">
 																		</div>

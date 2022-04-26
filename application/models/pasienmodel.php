@@ -21,31 +21,13 @@ class pasienModel extends CI_Model {
 			'no_telp' => $a['no_telp'],
 		];
         $this->db->insert('pasiens', $data);
-		$this->db->where('id_pasien', 'PN00');
+		$this->db->where('id_pasien', 'PSN00');
 		$this->db->set('id_pasien', 'CONCAT(id_pasien, id)', FALSE);
-		return $this->db->update('pasiens'); // gives UPDATE mytable SET field = field+1 WHERE id = 2
-		// $this->db->set('id_pasien', 'CONCAT(id_pasien, id)', FALSE);
-		// return $this->db->insert('pasiens', $da); // gives UPDATE mytable SET field = field+1 WHERE id = 2
-		// $sql = "UPDATE pasiens SET id_pasien = CONCAT(id_pasien, id)";
-		// return $this->db->update('pasiens', $id_pasien);
-		// $query = $this->db->query($sql);
-		// return $query->result_array();
-		// $this->db->where('id_pasien',$data);
-		// $this->db->set('id_pasien', 'CONCAT(id_pasien,id)');
-		// return $this->db->update('pasiens');
-		// return $this->db->set('id_pasien', 'CONCAT(id_pasien, id)', FALSE);
-		// return $this->db->update('pasiens'); // gives UPDATE mytable SET field = field+1 WHERE id = 2
-	}
-
-	public function insert_new_data($a) {
-		$newData = [
-			'id_pasien' => $a['id_pasien'],
-		];
-        return $this->db->insert('pasiens', $newData);
+		return $this->db->update('pasiens');
 	}
 
 	public function edit_data($a) {
-		$query = $this->db->query("SELECT * FROM pasiens");
+		// $query = $this->db->query("SELECT * FROM pasiens");
 		$this->db->where('id_pasien', $a);
 		return $this->db->get('pasiens')->row_array();
 	}

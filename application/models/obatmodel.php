@@ -12,16 +12,6 @@ class obatmodel extends CI_Model {
 		return $query->result_array();
 	}
 
-    // function get_obat() {
-    //     $query = $this->db->query("SELECT * FROM obats");
-    //     return $query->result_array();
-    // }
-    // function get_detail($a)
-    // {
-    //     $this->db->where('id_obat', $a);
-    //     return $this->db->get('obats')->row_array();
-    // }
-
 	public function insert_data($a) {
 		$data = [
 			'id' => $a['id'],
@@ -30,14 +20,14 @@ class obatmodel extends CI_Model {
 			'harga' => $a['harga'],
 		];
         $this->db->insert('obats', $data);
-		$this->db->where('id_obat', 'OT00');
+		$this->db->where('id_obat', 'OBT00');
 		$this->db->set('id_obat', 'CONCAT(id_obat, id)', FALSE);
 		return $this->db->update('obats');
 
 	}
 	
 	public function edit_data($a) {
-		$query = $this->db->query("SELECT * FROM obats");
+		// $query = $this->db->query("SELECT * FROM obats");
 		$this->db->where('id_obat', $a);
 		return $this->db->get('obats')->row_array();
 	}
