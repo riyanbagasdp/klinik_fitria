@@ -1,0 +1,118 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+}
+
+.navbar img {
+	border-radius: 10%;
+	width: 2.5em;
+}
+
+.navbar {
+	font-size: 1.2em;
+	padding: 2em 0 0 0;
+	transition: .5s ease;
+}
+
+.navbar.active {
+	font-size: 1.1em;
+	padding: .4em;
+	background-color: #0099ff;
+	box-shadow: 0 0 2em rgba(0, 0, 0, 0.45);
+}
+
+.nav-link.active {
+	color: #FFFFFF !important;
+}
+
+.nav-link {
+	color: #CCCCCC !important;
+}
+
+.nav-link:hover {
+	color: #FFFFFF !important;
+}
+
+.hero {
+	background: #0099ff;
+	height: 63vh;
+	position: relative;
+}
+
+.hero .container {
+	position: absolute;
+	width: 80%;
+	height: 100vh;
+	left: 0;
+	top: 0;
+	right: 0;
+	margin: auto;
+}
+
+.hero h1 {
+	font-size: 3.4em;
+	font-weight: 900;
+}
+
+.hero img {
+	width: 40em;
+}
+
+.btn {
+	transition: .5s ease;
+}
+
+.btn:hover {
+	transform: translate(1em) scale(1.05);
+	box-shadow: 0 0 1em rgba(0, 0, 0, 0.45);
+}
+
+
+.card {
+	transition: .5s ease;
+}
+.card:hover {
+	background: #0099ff;
+	color: #FFFFFF;
+	transform: translateY(-1em);
+	box-shadow: 0 0 2em rgba(0, 0, 0, 0.45);
+}
+
+.footer {
+	background: #0099ff;
+}
+
+.footer img {
+	width: 100%;
+}
+
+
+.input-email {
+	position: relative;
+}
+
+input[type=email] {
+	border-radius: 10em;
+	border: .3em solid #FFFFFF;
+	padding: 0 0 0 2em;
+}
+
+.btn-primary.btn-email {
+	transform: none;
+	position: absolute;
+	top: 0;
+	right: 0;
+	border: .3em solid #FFFFFF;
+	border-radius: 5em;
+}
+
+.btn-primary.btn-email:hover {
+	box-shadow: none;
+}
+
+hr {
+	border: .14em solid #DDDDDD;
+	border-radius: 50em;
+}
