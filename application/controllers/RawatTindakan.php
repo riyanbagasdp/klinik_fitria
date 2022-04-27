@@ -25,14 +25,14 @@ class RawatTindakan extends CI_Controller {
 		$id = $this->input->post('id');
 		$id_rawat_tindakan = "RT00";
 		$id_rawat = $this->input->post('id_rawat');
-		$dokter = $this->input->post('dokter');
+		$nama_dokter = $this->input->post('nama_dokter');
 		$harga = $this->input->post('harga');  
 
 		$data = array(
 			'id' => $id,
 			'id_rawat_tindakan' => $id_rawat_tindakan,
 			'id_rawat' => $id_rawat,
-			'dokter' => $dokter,
+			'nama_dokter' => $nama_dokter,
 			'harga' => $harga,
 		);
 
@@ -47,14 +47,14 @@ class RawatTindakan extends CI_Controller {
 
 	// Function untuk mengupdate data hasil dari tampilan edit
 	public function update($id_rawat_tindakan) {
-		$id_rawat = $this->input->post('nama_obat');
-		$id_tindakan = $this->input->post('harga');
-		$nama_dokter = $this->input->post('harga');
+		// $id_rawat = $this->input->post('id_rawat');
+		// $id_tindakan = $this->input->post('id_tindakan');
+		$nama_dokter = $this->input->post('nama_dokter');
 		$harga = $this->input->post('harga');
 
 		$data = array(
-			'id_rawat ' => $id_rawat ,
-			'id_tindakan ' => $id_tindakan ,
+			// 'id_rawat ' => $id_rawat ,
+			// 'id_tindakan ' => $id_tindakan ,
 			'nama_dokter ' => $nama_dokter ,
 			'harga ' => $harga ,
 			

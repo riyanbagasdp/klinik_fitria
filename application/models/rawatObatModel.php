@@ -66,5 +66,5 @@ class rawatObatModel extends CI_Model {
 	public function delete_data($id_rawat_obat) {
 		$this->db->where('id_rawat_obat', $id_rawat_obat);
 		return $this->db->delete('rawat_obat');
-	}	
+	}		
 }

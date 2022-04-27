@@ -458,7 +458,7 @@
 											<div class="modal-dialog">
 												<div class="modal-content">
 													<div class="modal-header">
-														<h5 class="modal-title" id="exampleModalLabel">Hapus Data Pasien
+														<h5 class="modal-title" id="exampleModalLabel">Hapus Data Rawat Obat
 														</h5>
 														<button type="button" class="btn-close" data-bs-dismiss="modal"
 															aria-label="Close"></button>
@@ -469,7 +469,7 @@
 													<div class="modal-footer">
 														<button type="button" class="btn btn-secondary"
 															data-bs-dismiss="modal">Tidak</button>
-														<a href="pasien/delete/<?php echo $row['id_pasien'];?>"
+														<a href="rawatObat/delete/<?php echo $row['id_rawat_obat'];?>"
 															type="button" class="btn btn-primary">Ya</a>
 													</div>
 												</div>
