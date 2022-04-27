@@ -365,14 +365,6 @@
                   </p>
                   <form class="forms-sample" action="<?php echo base_url('RawatTindakan/update/'.$data_rawat_tindakan['id_rawat_tindakan']) ?>" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
-                      <label for="id_rawat">ID Rawat</label>
-                      <input type="text" class="form-control" name="id_rawat" placeholder="ID Rawat" value="<?php echo $data_rawat_tindakan['id_rawat'] ?>">
-                    </div>
-                    <div class="form-group">
-                      <label for="id_tindakan">ID Tindakan</label>
-                      <input type="text" class="form-control" name="id_tindakan" placeholder="ID Tindakan" value="<?php echo $data_rawat_tindakan['id_tindakan'] ?>">
-                    </div>
-                    <div class="form-group">
                       <label for="nama_dokter">Nama Dokter</label>
                       <input type="text" class="form-control" name="nama_dokter" value="<?php echo $data_rawat_tindakan['nama_dokter'] ?>">
                     </div>

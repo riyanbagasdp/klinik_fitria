@@ -16,7 +16,7 @@ class rawatTindakanModel extends CI_Model {
 			'id' => $a['id'],
 			'id_rawat_tindakan' => $a['id_rawat_tindakan'],
 			'id_rawat' => $a['id_rawat'],
-			'dokter' => $a['dokter'],
+			'nama_dokter' => $a['nama_dokter'],
 			'harga' => $a['harga'],
 		];
         $this->db->insert('rawat_tindakan', $data);
@@ -44,9 +44,8 @@ class rawatTindakanModel extends CI_Model {
 
 	public function update_data($a, $id_rawat_tindakan) {
 		$data = [
-
-			'id_rawat ' => $a['id_rawat'] ,
-			'id_tindakan ' => $a['id_tindakan'] ,
+			// 'id_rawat ' => $a['id_rawat'] ,
+			// 'id_tindakan ' => $a['id_tindakan'] ,
 			'nama_dokter ' => $a['nama_dokter'] ,
 			'harga ' => $a['harga'] ,
 		];

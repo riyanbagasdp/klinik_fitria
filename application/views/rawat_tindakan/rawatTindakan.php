@@ -413,7 +413,7 @@
 																		</div>
 																		<div class="form-group">
 																			<label for="dokter">Dokter</label>
-																			<select class="form-control"name="dokter" id="dokter">
+																			<select class="form-control"name="nama_dokter" id="dokter">
 																				<option value=""></option>
 																			</select>
 																		</div>
