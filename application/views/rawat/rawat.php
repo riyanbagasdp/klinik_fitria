@@ -5,8 +5,13 @@
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Star Admin2 </title>
-
+	<title>Klinik Fitria</title>
+	<style>
+		.dataTables_filter,
+		.pagination {
+			float: right;
+		}
+	</style>
 	<!-- plugins:css -->
 	<link rel="stylesheet" href="<?php echo base_url('assets/vendors/feather/feather.css') ?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/vendors/mdi/css/materialdesignicons.min.css') ?>">
@@ -262,8 +267,7 @@
 						</a>
 						<div class="collapse" id="ui-basic">
 							<ul class="nav flex-column sub-menu">
-								<li class="nav-item"> <a class="nav-link"
-										href="rawat">Rawat</a></li>
+								<li class="nav-item"> <a class="nav-link" href="rawat">Rawat</a></li>
 								<li class="nav-item"> <a class="nav-link"
 										href="<?php echo base_url('RawatTindakan') ?>">Rawat Tindakan</a></li>
 								<li class="nav-item"> <a class="nav-link"
@@ -355,11 +359,17 @@
 			<!-- partial -->
 			<div class="main-panel">
 				<div class="content-wrapper">
+					<?php if ($this->session->flashdata('pesan') != '') { ?>
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						<?php echo $this->session->flashdata('pesan'); ?>
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+					<?php } ?>
 					<div class="row">
 						<div class="col-lg-12 grid-margin stretch-card">
 							<div class="card">
 								<div class="card-body">
-									<h4 class="card-title">Data Rawat</h4>
+									<h4 class="card-title fs-1 fw-bolder">Data Rawat</h4>
 									<button class="btn btn-primary mb-3" data-bs-toggle="modal"
 										data-bs-target="#add">Tambah</button>
 									<div class="table-responsive">
@@ -388,10 +398,10 @@
 													<td> <?php echo $row['kurang']; ?> </td>
 													<td>
 														<a href="rawat/detail/<?php echo $row['id_rawat'];?>"
-															class="btn btn-success">Detail</a>
+															class="btn btn-success px-4 py-3">Detail</a>
 														<a href="rawat/edit/<?php echo $row['id_rawat'];?>"
-															class="btn btn-warning">Edit</a>
-														<button class="btn btn-danger" data-bs-toggle="modal"
+															class="btn btn-warning px-4 py-3">Edit</a>
+														<button class="btn btn-danger px-4 py-3" data-bs-toggle="modal"
 															data-bs-target="#delete">Hapus</button>
 													</td>
 												</tr>
@@ -416,7 +426,7 @@
 																		action="<?php echo base_url('rawat/insert'); ?>"
 																		method="POST">
 																		<div class="form-group">
-																			<label for="id_pasien">ID Pasien</label>
+																			<label for="nama_pasien">Nama Pasien</label>
 																			<select class="form-control"
 																				name="id_pasien">
 																				<option value="" selected>Pilih salah

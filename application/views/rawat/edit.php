@@ -359,18 +359,18 @@
             <div class="col-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Formulir Pasien</h4>
+                  <h4 class="card-title fs-1 fw-bolder">Edit Data Pasien</h4>
                   <p class="card-description">
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id, alias.
                   </p>
                   <form class="forms-sample" action="<?php echo base_url('rawat/update/'.$data_rawat['id_rawat']) ?>" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                       <label for="id_rawat">ID Rawat</label>
-                      <input type="text" class="form-control" name="id_rawat" value="<?php echo $data_rawat['id_rawat'] ?>">
+                      <input type="text" class="form-control" name="id_rawat" value="<?php echo $data_rawat['id_rawat'] ?>" disabled>
                     </div>
 										<div class="form-group">
                       <label for="id_pasien">ID Pasien</label>
-                      <input type="text" class="form-control" name="id_pasien" value="<?php echo $data_rawat['id_pasien'] ?>">
+                      <input type="text" class="form-control" name="id_pasien" value="<?php echo $data_rawat['id_pasien'] ?>" disabled>
                     </div>
                     <div class="form-group">
                       <label for="tgl_rawat">Tanggal Rawat</label>
