@@ -19,7 +19,10 @@ class RawatObat extends CI_Controller {
 		$data['data_obat'] = $this->obatmodel->get_data();
 		$this->load->view('rawat_obat/rawatObat.php', $data);
 	}
-
+	public function delete($id_rawat_obat) {
+		$this->rawatobatModel->delete_data($id_rawat_obat);
+		redirect(base_url('rawatobat'));
+	}
 	// Function untuk menambah data pasien
 	// public function insert() {
 	// 	$id = $this->input->post('id');
