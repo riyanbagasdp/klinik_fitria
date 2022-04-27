@@ -16,13 +16,9 @@ class Obat extends CI_Controller {
 		$this->load->view('obat/obat', $data);
     }
 
-    public function add() {
-        $this->load->view('obat/add');
-    }
-
 	public function insert() {
 		$id = $this->input->post('id');
-		$id_obat = "OT00";
+		$id_obat = "OBT00";
 		$nama_obat = $this->input->post('nama_obat');
 		$harga = $this->input->post('harga');
 
@@ -33,8 +29,10 @@ class Obat extends CI_Controller {
 			'harga' => $harga,
 		);
 
-		$this->obatmodel->insert_data($data, 'obats');
-		redirect(base_url('obat'));
+		if($this->obatmodel->insert_data($data, 'obats')) {
+			$this->session->set_flashdata('pesan', 'Data berhasil di tambahakan');
+			redirect(base_url('obat'));
+		}
 	}
 
 	// Function untuk mengarahkan ke tampilan edit
@@ -51,21 +49,18 @@ class Obat extends CI_Controller {
 		$data = array(
 			'nama_obat' => $nama_obat,
 			'harga' => $harga,
-		);		
-		$nama_obat = $this->input->post('nama_obat');
-		$harga = $this->input->post('harga'); 
-
-		$data = array(
-			'nama_obat' => $nama_obat,
-			'harga' => $harga,
 		);
 
-		$this->obatmodel->update_data($data, $id_obat);
-		redirect(base_url('obat'));
+		if($this->obatmodel->update_data($data, $id_obat)) {
+			$this->session->set_flashdata('pesan', 'Data berhasil di ubah');
+			redirect(base_url('obat'));
+		}
     }
 
 	public function delete($id_obat) {
-		$this->obatmodel->delete_data($id_obat);
-		redirect(base_url('obat'));
+		if($this->obatmodel->delete_data($id_obat)) {
+			$this->session->set_flashdata('pesan', 'Data berhasil di hapus');
+			redirect(base_url('obat'));
+		}
 	}
 }

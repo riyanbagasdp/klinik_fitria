@@ -5,7 +5,14 @@
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Star Admin2 </title>
+	<title>Klinik Fitria</title>
+
+	<style>
+		.dataTables_filter,
+		.pagination {
+			float: right;
+		}
+	</style>
 
 	<!-- plugins:css -->
 	<link rel="stylesheet" href="<?php echo base_url('assets/vendors/feather/feather.css') ?>">
@@ -262,12 +269,11 @@
 						</a>
 						<div class="collapse" id="ui-basic">
 							<ul class="nav flex-column sub-menu">
+								<li class="nav-item"> <a class="nav-link" href="rawat">Rawat</a></li>
 								<li class="nav-item"> <a class="nav-link"
-										href="rawat">Rawat</a></li>
+										href="<?php echo base_url('RawatTindakan') ?>">Rawat Tindakan</a></li>
 								<li class="nav-item"> <a class="nav-link"
-										href="pages/ui-features/dropdowns.html">Dropdowns</a></li>
-								<li class="nav-item"> <a class="nav-link"
-										href="pages/ui-features/typography.html">Typography</a></li>
+										href="<?php echo base_url('RawatObat') ?>">Rawat Obat</a></li>
 							</ul>
 						</div>
 					</li>
@@ -337,7 +343,7 @@
 						</a>
 						<div class="collapse" id="auth">
 							<ul class="nav flex-column sub-menu">
-								<li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a>
+								<li class="nav-item"> <a class="nav-link" href="login/login.html"> Login </a>
 								</li>
 							</ul>
 						</div>
@@ -355,143 +361,149 @@
 			<!-- partial -->
 			<div class="main-panel">
 				<div class="content-wrapper">
+					<?php if ($this->session->flashdata('pesan') != '') { ?>
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						<?php echo $this->session->flashdata('pesan'); ?>
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+					<?php } ?>
 					<div class="row">
-						<div class="col-lg-12 grid-margin stretch-card">
+						<div class="col grid-margin stretch-card">
 							<div class="card">
 								<div class="card-body">
-									<h4 class="card-title">Data Pasien</h4>
-									<button class="btn btn-primary mb-3" data-bs-toggle="modal"
-										data-bs-target="#add">Tambah</button>
-									<div class="table-responsive">
-										<table class="table table-hover" id="table">
-											<thead class="table-info">
-												<tr>
-													<th>ID Pasien</th>
-													<th>Nama</th>
-													<th>Alamat</th>
-													<th>TTL</th>
-													<th>No. Telepon</th>
-													<th>Aksi</th>
-												</tr>
-											</thead>
-											<tbody>
-												<?php foreach ($data as $row) { ?>
-												<tr>
-													<td> <?php echo $row['id_pasien']; ?> </td>
-													<td> <?php echo $row['nama_pasien']; ?> </td>
-													<td> <?php echo $row['alamat']; ?> </td>
-													<td> <?php echo $row['tgl_lahir']; ?> </td>
-													<td> <?php echo $row['no_telp']; ?> </td>
-													<td>
-														<a href="pasien/edit/<?php echo $row['id_pasien'];?>"
-															class="btn btn-warning">Edit</a>
-														<button class="btn btn-danger" data-bs-toggle="modal"
-															data-bs-target="#delete">Hapus</button>
-													</td>
-												</tr>
-												<?php } ?>
-											</tbody>
-										</table>
-										<!-- Modal -->
-										<div class="modal fade" id="add" tabindex="-1"
-											aria-labelledby="exampleModalLabel" aria-hidden="true">
-											<div class="modal-dialog">
-												<div class="modal-content">
-													<div class="row">
-														<div class="col-12 grid-margin stretch-card">
-															<div class="card">
-																<div class="card-body">
-																	<h4 class="card-title">Formulir Pasien</h4>
-																	<p class="card-description">
-																		Lorem ipsum dolor sit, amet consectetur
-																		adipisicing elit. Id, alias.
-																	</p>
-																	<form class="forms-sample"
-																		action="<?php echo base_url('pasien/insert'); ?>"
-																		method="POST">
-																		<div class="form-group">
-																			<label for="nama_pasien">Nama</label>
-																			<input type="text" class="form-control"
-																				name="nama_pasien" required
-																				placeholder="Nama Pasien"
-																				oninvalid="this.setCustomValidity('Nama harus di isi!')"
-																				oninput="this.setCustomValidity('')">
-																		</div>
-																		<div class="form-group">
-																			<label for="alamat">Alamat</label>
-																			<input type="text" class="form-control"
-																				name="alamat" required
-																				placeholder="Alamat"
-																				oninvalid="this.setCustomValidity('Alamat harus di isi!')"
-																				oninput="this.setCustomValidity('')">
-																		</div>
-																		<div class="form-group">
-																			<label for="tgl_lahir">Tanggal Lahir</label>
-																			<input type="date" class="form-control"
-																				name="tgl_lahir" required
-																				oninvalid="this.setCustomValidity('Tanggal lahir pasien harus di isi!')"
-																				oninput="this.setCustomValidity('')">
-																		</div>
-																		<div class="form-group">
-																			<label for="no_telp">No. Telp/Hp</label>
-																			<input type="number" class="form-control"
-																				name="no_telp"
-																				placeholder="+62 08X XXX XXX" min='10'
-																				value="+62 ">
-																		</div>
-																		<button type="submit"
-																			class="btn btn-primary me-2">Simpan</button>
-																		<button type="reset"
-																			class="btn btn-light">Reset</button>
-																	</form>
+									<h1 class="card-title fs-1 fw-bolder">Data Pasien</h4>
+										<div class="table-responsive">
+											<table class="table table-hover" id="table">
+												<button class="btn btn-primary mb-3" data-bs-toggle="modal"
+													data-bs-target="#add">Tambah</button>
+												<thead class="table-info">
+													<tr>
+														<th>ID Pasien</th>
+														<th>Nama</th>
+														<th>Alamat</th>
+														<th>TTL</th>
+														<th>No. Telepon</th>
+														<th>Aksi</th>
+													</tr>
+												</thead>
+												<tbody>
+													<?php foreach ($data as $row) { ?>
+													<tr>
+														<td> <?php echo $row['id_pasien']; ?> </td>
+														<td> <?php echo $row['nama_pasien']; ?> </td>
+														<td> <?php echo $row['alamat']; ?> </td>
+														<td> <?php echo $row['tgl_lahir']; ?> </td>
+														<td> <?php echo $row['no_telp']; ?> </td>
+														<td>
+															<a href="pasien/edit/<?php echo $row['id_pasien'];?>"
+																class="btn btn-warning py-3 px-4">Edit</a>
+															<button class="btn btn-danger py-3 px-4"
+																data-bs-toggle="modal"
+																data-bs-target="#delete">Hapus</button>
+														</td>
+													</tr>
+													<?php } ?>
+												</tbody>
+											</table>
+
+											<!-- Modal -->
+											<!-- Modal untuk add data -->
+											<div class="modal fade" id="add" tabindex="-1"
+												aria-labelledby="exampleModalLabel" aria-hidden="true">
+												<div class="modal-dialog">
+													<div class="modal-content">
+														<div class="row">
+															<div class="col-12 grid-margin stretch-card">
+																<div class="card">
+																	<div class="card-body">
+																		<h4 class="card-title">Formulir Pasien</h4>
+																		<p class="card-description">
+																			Lorem ipsum dolor sit, amet consectetur
+																			adipisicing elit. Id, alias.
+																		</p>
+																		<form class="forms-sample"
+																			action="<?php echo base_url('pasien/insert'); ?>"
+																			method="POST">
+																			<div class="form-group">
+																				<label for="nama_pasien">Nama</label>
+																				<input type="text" class="form-control"
+																					name="nama_pasien" required
+																					placeholder="Nama Pasien"
+																					oninvalid="this.setCustomValidity('Nama harus di isi!')"
+																					oninput="this.setCustomValidity('')">
+																			</div>
+																			<div class="form-group">
+																				<label for="alamat">Alamat</label>
+																				<input type="text" class="form-control"
+																					name="alamat" required
+																					placeholder="Alamat"
+																					oninvalid="this.setCustomValidity('Alamat harus di isi!')"
+																					oninput="this.setCustomValidity('')">
+																			</div>
+																			<div class="form-group">
+																				<label for="tgl_lahir">Tanggal
+																					Lahir</label>
+																				<input type="date" class="form-control"
+																					name="tgl_lahir" required
+																					oninvalid="this.setCustomValidity('Tanggal lahir pasien harus di isi!')"
+																					oninput="this.setCustomValidity('')">
+																			</div>
+																			<div class="form-group">
+																				<label for="no_telp">No. Telp/Hp</label>
+																				<input type="number"
+																					class="form-control" name="no_telp"
+																					placeholder="+62 08X XXX XXX"
+																					min='10' required
+																					oninvalid="this.setCustomValidity('Nomor HP pasien harus di isi!')"
+																					oninput="this.setCustomValidity('')">
+																			</div>
+																			<button type="submit"
+																				class="btn btn-primary me-2">Simpan</button>
+																			<button type="reset"
+																				class="btn btn-light">Reset</button>
+																		</form>
+																	</div>
 																</div>
 															</div>
 														</div>
 													</div>
 												</div>
 											</div>
-										</div>
-										<div class="modal fade" id="delete" tabindex="-1"
-											aria-labelledby="exampleModalLabel" aria-hidden="true">
-											<div class="modal-dialog">
-												<div class="modal-content">
-													<div class="modal-header">
-														<h5 class="modal-title" id="exampleModalLabel">Hapus Data Pasien
-														</h5>
-														<button type="button" class="btn-close" data-bs-dismiss="modal"
-															aria-label="Close"></button>
-													</div>
-													<div class="modal-body">
-														Apakah anda yakin untuk menghapus data ini?
-													</div>
-													<div class="modal-footer">
-														<button type="button" class="btn btn-secondary"
-															data-bs-dismiss="modal">Tidak</button>
-														<a href="pasien/delete/<?php echo $row['id_pasien'];?>"
-															type="button" class="btn btn-primary">Ya</a>
+											<!-- End of modal add data -->
+
+											<!-- Modal untuk hapus data -->
+											<div class="modal fade" id="delete" tabindex="-1"
+												aria-labelledby="exampleModalLabel" aria-hidden="true">
+												<div class="modal-dialog">
+													<div class="modal-content">
+														<div class="modal-header">
+															<h5 class="modal-title" id="exampleModalLabel">Hapus Data
+																Pasien
+															</h5>
+															<button type="button" class="btn-close"
+																data-bs-dismiss="modal" aria-label="Close"></button>
+														</div>
+														<div class="modal-body">
+															Apakah anda yakin untuk menghapus data ini?
+														</div>
+														<div class="modal-footer">
+															<button type="button" class="btn btn-secondary"
+																data-bs-dismiss="modal">Tidak</button>
+															<a href="pasien/delete/<?php echo $row['id_pasien'];?>"
+																type="button" class="btn btn-primary">Ya</a>
+														</div>
 													</div>
 												</div>
 											</div>
+											<!-- End of modal hapus data -->
+											<!-- End of modal for delete -->
 										</div>
-										<!-- End of modal for delete -->
-									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 				<!-- content-wrapper ends -->
-				<!-- partial:../../partials/_footer.html -->
-				<footer class="footer">
-					<div class="d-sm-flex justify-content-center justify-content-sm-between">
-						<span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Premium <a
-								href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from
-							BootstrapDash.</span>
-						<span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2021. All
-							rights reserved.</span>
-					</div>
-				</footer>
-				<!-- partial -->
 			</div>
 			<!-- main-panel ends -->
 		</div>
@@ -543,7 +555,7 @@
 			// 		}
 			// 	})
 			// });
-			
+
 			$('#table').DataTable({
 				processing: true,
 				ordering: false,

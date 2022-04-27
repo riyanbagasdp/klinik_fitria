@@ -265,9 +265,9 @@
 								<li class="nav-item"> <a class="nav-link"
 										href="rawat">Rawat</a></li>
 								<li class="nav-item"> <a class="nav-link"
-										href="pages/ui-features/dropdowns.html">Dropdowns</a></li>
+										href="<?php echo base_url('RawatTindakan') ?>">Rawat Tindakan</a></li>
 								<li class="nav-item"> <a class="nav-link"
-										href="pages/ui-features/typography.html">Typography</a></li>
+										href="<?php echo base_url('RawatObat') ?>">Rawat Obat</a></li>
 							</ul>
 						</div>
 					</li>
@@ -337,7 +337,7 @@
 						</a>
 						<div class="collapse" id="auth">
 							<ul class="nav flex-column sub-menu">
-								<li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a>
+								<li class="nav-item"> <a class="nav-link" href="login/login.html"> Login </a>
 								</li>
 							</ul>
 						</div>
@@ -380,13 +380,15 @@
 												<?php foreach ($data_rawat as $row) { ?>
 												<tr>
 													<td> <?php echo $row['id_rawat']; ?> </td>
-													<td> <?php echo 'PN00'.$row['id_pasien']; ?> </td>
+													<td> <?php echo $row['id_pasien']; ?> </td>
 													<td> <?php echo $row['tgl_rawat']; ?> </td>
 													<td> <?php echo $row['total_tindakan']; ?> </td>
 													<td> <?php echo $row['total_obat']; ?> </td>
 													<td> <?php echo $row['uang_muka']; ?> </td>
 													<td> <?php echo $row['kurang']; ?> </td>
 													<td>
+														<a href="rawat/detail/<?php echo $row['id_rawat'];?>"
+															class="btn btn-success">Detail</a>
 														<a href="rawat/edit/<?php echo $row['id_rawat'];?>"
 															class="btn btn-warning">Edit</a>
 														<button class="btn btn-danger" data-bs-toggle="modal"
@@ -417,9 +419,9 @@
 																			<label for="id_pasien">ID Pasien</label>
 																			<select class="form-control"
 																				name="id_pasien">
-																				<?php foreach($id_pasien as $id_pasien) { 
-								echo '<option value="'.$id_pasien->id_pasien.'">'.$id_pasien->id_pasien.'</option>';
-							} ?>
+																				<option value="" selected>Pilih salah
+																					satu</option>
+																				<?php foreach($data_pasien as $pasien) { echo '<option value="'.$pasien['id'].'">'.$pasien['nama_pasien'].'</option>';} ?>
 																			</select>
 																		</div>
 																		<div class="form-group">
@@ -430,34 +432,12 @@
 																				oninput="this.setCustomValidity('')">
 																		</div>
 																		<div class="form-group">
-																			<label for="total_tindakan">Total
-																				Tindakan</label>
-																			<input type="text" class="form-control"
-																				name="total_tindakan" required
-																				oninvalid="this.setCustomValidity('Nama harus di isi!')"
-																				oninput="this.setCustomValidity('')">
-																		</div>
-																		<div class="form-group">
-																			<label for="total_obat">Total Obat</label>
-																			<input type="text" class="form-control"
-																				name="total_obat" required
-																				placeholder="Alamat"
-																				oninvalid="this.setCustomValidity('Alamat harus di isi!')"
-																				oninput="this.setCustomValidity('')">
-																		</div>
-																		<div class="form-group">
-																			<label for="uang_muka">Uang Muka</label>
-																			<input type="text" class="form-control"
-																				name="uang_muka" required
-																				oninvalid="this.setCustomValidity('Tanggal lahir pasien harus di isi!')"
-																				oninput="this.setCustomValidity('')">
-																		</div>
-																		<div class="form-group">
-																			<label for="kurang">Kurang</label>
+																			<label for="uang_muka">Uang Muka
+																				(Rp)</label>
 																			<input type="number" class="form-control"
-																				name="kurang"
-																				placeholder="+62 08X XXX XXX" min='10'
-																				value="+62 ">
+																				name="uang_muka" required
+																				oninvalid="this.setCustomValidity('Uang Muka harus di isi!')"
+																				oninput="this.setCustomValidity('')">
 																		</div>
 																		<button type="submit"
 																			class="btn btn-primary me-2">Simpan</button>

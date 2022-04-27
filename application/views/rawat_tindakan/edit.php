@@ -359,26 +359,26 @@
             <div class="col-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Formulir Pasien</h4>
+                  <h4 class="card-title">Formulir Rawat Tindakan</h4>
                   <p class="card-description">
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id, alias.
                   </p>
-                  <form class="forms-sample" action="<?php echo base_url('pasien/update/'.$data_pasien['id_pasien']) ?>" method="POST" enctype="multipart/form-data">
+                  <form class="forms-sample" action="<?php echo base_url('RawatTindakan/update/'.$data_rawat_tindakan['id_rawat_tindakan']) ?>" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
-                      <label for="nama_pasien">Nama</label>
-                      <input type="text" class="form-control" name="nama_pasien" placeholder="Nama Pasien" value="<?php echo $data_pasien['nama_pasien'] ?>">
+                      <label for="id_rawat">ID Rawat</label>
+                      <input type="text" class="form-control" name="id_rawat" placeholder="ID Rawat" value="<?php echo $data_rawat_tindakan['id_rawat'] ?>">
                     </div>
                     <div class="form-group">
-                      <label for="alamat">Alamat</label>
-                      <input type="text" class="form-control" name="alamat" placeholder="Alamat" value="<?php echo $data_pasien['alamat'] ?>">
+                      <label for="id_tindakan">ID Tindakan</label>
+                      <input type="text" class="form-control" name="id_tindakan" placeholder="ID Tindakan" value="<?php echo $data_rawat_tindakan['id_tindakan'] ?>">
                     </div>
                     <div class="form-group">
-                      <label for="tgl_lahir">Tanggal Lahir</label>
-                      <input type="date" class="form-control" name="tgl_lahir" value="<?php echo $data_pasien['tgl_lahir'] ?>">
+                      <label for="nama_dokter">Nama Dokter</label>
+                      <input type="text" class="form-control" name="nama_dokter" value="<?php echo $data_rawat_tindakan['nama_dokter'] ?>">
                     </div>
                     <div class="form-group">
-                      <label for="no_telp">No. Telp/Hp</label>
-                      <input type="number" class="form-control" name="no_telp" placeholder="+62 08X XXX XXX" min='10' value="<?php echo $data_pasien['no_telp'] ?>">
+                      <label for="harga">Harga</label>
+                      <input type="number" class="form-control" name="harga" value="<?php echo $data_rawat_tindakan['harga'] ?>">
                     </div>
                     <button type="submit" class="btn btn-primary me-2">Simpan</button>
                     <button type="reset" class="btn btn-light">Reset</button>

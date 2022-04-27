@@ -265,9 +265,9 @@
 								<li class="nav-item"> <a class="nav-link"
 										href="rawat">Rawat</a></li>
 								<li class="nav-item"> <a class="nav-link"
-										href="pages/ui-features/dropdowns.html">Dropdowns</a></li>
+										href="<?php echo base_url('RawatTindakan') ?>">Rawat Tindakan</a></li>
 								<li class="nav-item"> <a class="nav-link"
-										href="pages/ui-features/typography.html">Typography</a></li>
+										href="<?php echo base_url('RawatObat') ?>">Rawat Obat</a></li>
 							</ul>
 						</div>
 					</li>
@@ -337,7 +337,7 @@
 						</a>
 						<div class="collapse" id="auth">
 							<ul class="nav flex-column sub-menu">
-								<li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a>
+								<li class="nav-item"> <a class="nav-link" href="login/login.html"> Login </a>
 								</li>
 							</ul>
 						</div>
@@ -359,7 +359,7 @@
 						<div class="col-lg-12 grid-margin stretch-card">
 							<div class="card">
 								<div class="card-body">
-									<h4 class="card-title">Data Dokter</h4>
+									<h4 class="card-title fs-1 fw-bolder">Data Dokter</h4>
 									<div class="table-responsive">
 										<table class="table table-hover" id="dokter">
 											<thead class="table-info">
@@ -453,7 +453,6 @@
 					{data: 'iddokter'},
 					{data: 'namadokter'},
 				],
-				// scrollY: 200,
 			});
 		});
 

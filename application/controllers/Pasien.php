@@ -28,7 +28,8 @@ class Pasien extends CI_Controller {
 	// Function untuk menambah data pasien
 	public function insert() {
 		$id = $this->input->post('id');
-		$id_pasien = "PN00";
+		var_dump($id);		
+		$id_pasien = "PSN00";
 		$nama_pasien = $this->input->post('nama_pasien');
 		$alamat = $this->input->post('alamat');
 		$tgl_lahir = $this->input->post('tgl_lahir');  
@@ -43,8 +44,10 @@ class Pasien extends CI_Controller {
 			'no_telp' => $no_telp,
 		);
 
-		$this->pasienModel->insert_data($data, 'pasiens');
-		redirect(base_url('pasien'));
+		if($this->pasienModel->insert_data($data, 'pasiens')) {
+			$this->session->set_flashdata('pesan', 'Data berhasil di tambahkan');
+			redirect(base_url('pasien'));
+		}
 	}
 
 	// Function untuk mengarahkan ke tampilan edit
@@ -65,25 +68,18 @@ class Pasien extends CI_Controller {
 			'alamat' => $alamat,
 			'tgl_lahir' => $tgl_lahir,
 			'no_telp' => $no_telp,
-		);		
-		$nama_pasien = $this->input->post('nama_pasien');
-		$alamat = $this->input->post('alamat');
-		$tgl_lahir = $this->input->post('tgl_lahir');  
-		$no_telp = $this->input->post('no_telp');  
-
-		$data = array(
-			'nama_pasien' => $nama_pasien,
-			'alamat' => $alamat,
-			'tgl_lahir' => $tgl_lahir,
-			'no_telp' => $no_telp,
 		);
 
-		$this->pasienModel->update_data($data, $id_pasien);
-		redirect(base_url('pasien'));
+		if($this->pasienModel->update_data($data, $id_pasien)) {
+			$this->session->set_flashdata('pesan', 'Data berhasil di ubah');
+			redirect(base_url('pasien'));
+		}
     }
 
 	public function delete($id_pasien) {
-		$this->pasienModel->delete_data($id_pasien);
-		redirect(base_url('pasien'));
+		if($this->pasienModel->delete_data($id_pasien)) {
+			$this->session->set_flashdata('pesan', 'Data berhasil di hapus');
+			redirect(base_url('pasien'));
+		}
 	}
 }

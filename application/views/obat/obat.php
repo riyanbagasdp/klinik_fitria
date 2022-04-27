@@ -5,7 +5,14 @@
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Star Admin2 </title>
+	<title>Klinik Fitria</title>
+
+	<style>
+		.dataTables_filter,
+		.pagination {
+			float: right;
+		}
+	</style>
 
 	<!-- plugins:css -->
 	<link rel="stylesheet" href="<?php echo base_url('assets/vendors/feather/feather.css') ?>">
@@ -262,12 +269,11 @@
 						</a>
 						<div class="collapse" id="ui-basic">
 							<ul class="nav flex-column sub-menu">
+								<li class="nav-item"> <a class="nav-link" href="rawat">Rawat</a></li>
 								<li class="nav-item"> <a class="nav-link"
-										href="rawat">Rawat</a></li>
+										href="<?php echo base_url('RawatTindakan') ?>">Rawat Tindakan</a></li>
 								<li class="nav-item"> <a class="nav-link"
-										href="pages/ui-features/dropdowns.html">Dropdowns</a></li>
-								<li class="nav-item"> <a class="nav-link"
-										href="pages/ui-features/typography.html">Typography</a></li>
+										href="<?php echo base_url('RawatObat') ?>">Rawat Obat</a></li>
 							</ul>
 						</div>
 					</li>
@@ -337,7 +343,7 @@
 						</a>
 						<div class="collapse" id="auth">
 							<ul class="nav flex-column sub-menu">
-								<li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a>
+								<li class="nav-item"> <a class="nav-link" href="login/login.html"> Login </a>
 								</li>
 							</ul>
 						</div>
@@ -354,12 +360,18 @@
 			</nav>
 			<!-- partial -->
 			<div class="main-panel">
-				<div class="content-wrapper bg-dark">
+				<div class="content-wrapper">
+					<?php if ($this->session->flashdata('pesan') != '') { ?>
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						<?php echo $this->session->flashdata('pesan'); ?>
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+					<?php } ?>
 					<div class="row">
 						<div class="col-lg-12 grid-margin stretch-card">
 							<div class="card">
 								<div class="card-body">
-									<h4 class="card-title">Data Obat</h4>
+									<h4 class="card-title fs-1 fw-bolder">Data Obat</h4>
 									<button class="btn btn-primary mb-3" data-bs-toggle="modal"
 										data-bs-target="#add">Tambah</button>
 									<div class="table-responsive">
@@ -380,8 +392,8 @@
 													<td> <?php echo 'Rp. '.$row['harga']; ?> </td>
 													<td>
 														<a href="obat/edit/<?php echo $row['id_obat'];?>"
-															class="btn btn-warning">Edit</a>
-														<button class="btn btn-danger" data-bs-toggle="modal"
+															class="btn btn-warning py-3 px-4">Edit</a>
+														<button class="btn btn-danger py-3 px-4" data-bs-toggle="modal"
 															data-bs-target="#delete">Hapus</button>
 													</td>
 												</tr>
@@ -402,7 +414,9 @@
 																		Lorem ipsum dolor sit, amet consectetur
 																		adipisicing elit. Id, alias.
 																	</p>
-																	<form class="forms-sample" action="<?php echo base_url('obat/insert') ?>" method="post" enctype="multipart/form-data">
+																	<form class="forms-sample"
+																		action="<?php echo base_url('obat/insert') ?>"
+																		method="post" enctype="multipart/form-data">
 																		<div class="form-group">
 																			<label for="nama_obat">Nama Obat</label>
 																			<input type="text" class="form-control"
@@ -414,8 +428,7 @@
 																		<div class="form-group">
 																			<label for="harga">Harga (Rp)</label>
 																			<input type="number" class="form-control"
-																				name="harga" required
-																				placeholder="Rp."
+																				name="harga" required placeholder="Rp."
 																				oninvalid="this.setCustomValidity('Harga harus di isi!')"
 																				oninput="this.setCustomValidity('')">
 																		</div>
@@ -523,7 +536,7 @@
 			// 		}
 			// 	})
 			// });
-			
+
 			$('#table').DataTable({
 				ordering: false,
 				processing: true,
