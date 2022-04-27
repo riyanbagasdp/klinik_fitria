@@ -383,7 +383,7 @@
 													<td> <?php echo $row['jumlah']; ?> </td>
 													<td> <?php echo $row['harga']; ?> </td>
 													<td>
-														<a href="rawatobat/edit/<?php echo $row['id_rawat'];?>"
+														<a href="rawatObat/edit/<?php echo $row['id_rawat_obat'];?>"
 															class="btn btn-warning">Edit</a>
 														<button class="btn btn-danger" data-bs-toggle="modal"
 															data-bs-target="#delete">Hapus</button>

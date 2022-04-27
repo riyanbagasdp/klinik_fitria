@@ -39,30 +39,32 @@ class rawatObatModel extends CI_Model {
 
 	public function insert_new_data($a) {
 		$newData = [
-			'id_pasien' => $a['id_pasien'],
+			'id_rawat_obat' => $a['id_rawat_obat'],
 		];
-        return $this->db->insert('pasiens', $newData);
+        return $this->db->insert('rawat_obat', $newData);
 	}
 
 	public function edit_data($a) {
-		$query = $this->db->query("SELECT * FROM pasiens");
-		$this->db->where('id_pasien', $a);
-		return $this->db->get('pasiens')->row_array();
+		$query = $this->db->query("SELECT * FROM rawat_obat");
+		$this->db->where('id_rawat_obat', $a);
+		return $this->db->get('rawat_obat')->row_array();
 	}
 
-	public function update_data($a, $id_pasien) {
+	public function update_data($a, $id_rawat_obat) {
 		$data = [
-			'nama_pasien' => $a['nama_pasien'],
-			'alamat' => $a['alamat'],
-			'tgl_lahir' => $a['tgl_lahir'],
-			'no_telp' => $a['no_telp'],
+			'id_rawat_obat' => $a['id_rawat_obat'],
+			'id_rawat' => $a['id_rawat'],
+			'id_obat' => $a['id_obat'],
+			'jumlah' => $a['jumlah'],
+			'harga' => $a['harga'],
+
 		];
-		$this->db->where('id_pasien', $id_pasien);
-        return $this->db->update('pasiens', $data);
+		$this->db->where('id_rawat_obat', $id_rawat_obat);
+        return $this->db->update('rawat_obat', $data);
 	}
 
-	public function delete_data($id_pasien) {
-		$this->db->where('id_pasien', $id_pasien);
-		return $this->db->delete('pasiens');
+	public function delete_data($id_rawat_obat) {
+		$this->db->where('id_rawat_obat', $id_rawat_obat);
+		return $this->db->delete('rawat_obat');
 	}	
 }

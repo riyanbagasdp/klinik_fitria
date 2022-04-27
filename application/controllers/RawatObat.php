@@ -12,7 +12,7 @@ class RawatObat extends CI_Controller {
         $this->load->helper(array('text', 'url', 'cookie', 'string'));
     }
 
-	// Function untuk menampilkan halaman pertama di pasien
+	// Function untuk menampilkan halaman pertama di rawat obat
 	public function index() {
 		$data['data_rawat_obat'] = $this->rawatObatModel->get_data();
 		$data['data_rawat'] = $this->rawatModel->get_data();
@@ -43,42 +43,35 @@ class RawatObat extends CI_Controller {
 	// }
 
 	// // Function untuk mengarahkan ke tampilan edit
-	// public function edit($a) {
-    //     $data['data_pasien'] = $this->pasienModel->edit_data($a);
-    //     $this->load->view('pasien/edit', $data);
-    // }
+	public function edit($a) {
+        $data['rawat_obat'] = $this->rawatObatModel->edit_data($a);
+        $this->load->view('rawat_obat/edit', $data);
+    }
 
 	// // Function untuk mengupdate data hasil dari tampilan edit
-    // public function update($id_pasien) {
-	// 	$nama_pasien = $this->input->post('nama_pasien');
-	// 	$alamat = $this->input->post('alamat');
-	// 	$tgl_lahir = $this->input->post('tgl_lahir');  
-	// 	$no_telp = $this->input->post('no_telp');  
+    public function update($id_pasien) {
+		$id_rawat_obat = $this->input->post('id_rawat_obat');
+		$id_rawat = $this->input->post('id_rawat');
+		$id_obat = $this->input->post('id_obat');  
+		$jumlah = $this->input->post('jumlah');  
+		$harga = $this->input->post('harga');  
 
-	// 	$data = array(
-	// 		'nama_pasien' => $nama_pasien,
-	// 		'alamat' => $alamat,
-	// 		'tgl_lahir' => $tgl_lahir,
-	// 		'no_telp' => $no_telp,
-	// 	);		
-	// 	$nama_pasien = $this->input->post('nama_pasien');
-	// 	$alamat = $this->input->post('alamat');
-	// 	$tgl_lahir = $this->input->post('tgl_lahir');  
-	// 	$no_telp = $this->input->post('no_telp');  
 
-	// 	$data = array(
-	// 		'nama_pasien' => $nama_pasien,
-	// 		'alamat' => $alamat,
-	// 		'tgl_lahir' => $tgl_lahir,
-	// 		'no_telp' => $no_telp,
-	// 	);
+		$data = array(
+			'id_rawat_obat' => $id_rawat_obat,
+			'id_rawat' => $id_rawat,
+			'id_obat' => $id_obat,
+			'jumlah' => $jumlah,
+			'harga' => $harga,
 
-	// 	$this->pasienModel->update_data($data, $id_pasien);
-	// 	redirect(base_url('pasien'));
-    // }
+		);		
 
-	// public function delete($id_pasien) {
-	// 	$this->pasienModel->delete_data($id_pasien);
-	// 	redirect(base_url('pasien'));
-	// }
+		$this->rawatObatModel->update_data($data, $id_rawat_obat);
+		redirect(base_url('RawatObat'));
+    }
+
+	public function delete($id_rawat_obat) {
+		$this->rawatObatModel->delete_data($id_rawat_obat);
+		redirect(base_url('RawatObat'));
+	}
 }

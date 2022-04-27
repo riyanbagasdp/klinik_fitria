@@ -5,7 +5,7 @@
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Login Klinik Fitria</title>
+	<title>Forget Password ?</title>
 	<!-- plugins:css -->
 	<link rel="stylesheet" href="<?php echo base_url('assets/vendors/feather/feather.css') ?>">
 	<!-- <link rel="stylesheet" href="../../vendors/feather/feather.css"> -->
@@ -39,36 +39,15 @@
 							<div class="brand-logo">
 								<img src="<?php echo base_url('assets/img/logo/logo.jpg') ?>" alt="logo">
 							</div>
-							<h4>Hello! let's get started</h4>
-							<h6 class="fw-light">Sign in to continue.</h6>
-							<form class="pt-3" action="<?php echo base_url('login/auth') ?>" method="POST">
+							<h4><center>Forget Password ?</center></h4>
+							<h6 class="fw-light">Input Email</h6>
+							<form class="pt-3" action="<?php echo base_url('login/password') ?>" method="POST">
 								<div class="form-group">
 									<input type="email" name="email" class="form-control form-control-lg" id="exampleInputEmail1"
-										placeholder="Email">
+										placeholder="email">
 								</div>
-								<div class="form-group">
-									<input type="password" name="password" class="form-control form-control-lg" id="exampleInputPassword1"
-										placeholder="Password">
-								</div>
-								<div class="mt-3">
-									<button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN IN</button>
-								</div>
-								<div class="my-2 d-flex justify-content-between align-items-center">
-									<div class="form-check">
-										<label class="form-check-label text-muted">
-											<input type="checkbox" class="form-check-input">
-											Keep me signed in
-										</label>
-									</div>
-									<a href="login/password" class="auth-link text-black">Forgot password?</a>
-								</div>
-								<div class="mb-2">
-									<button type="button" class="btn btn-block btn-facebook auth-form-btn">
-										<i class="ti-facebook me-2"></i>Connect using facebook
-									</button>
-								</div>
-								<div class="text-center mt-4 fw-light">
-									Don't have an account? <a href="login/register" class="text-primary">Create</a>
+                                <div class="mt-3">
+									<button><a href="login/newpassword" class="auth-link text-black">SEND</a></button>
 								</div>
 							</form>
 						</div>

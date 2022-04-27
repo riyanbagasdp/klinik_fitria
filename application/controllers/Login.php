@@ -91,4 +91,16 @@ class Login extends CI_Controller {
 		redirect(base_url('login'));
 	}
 
+	public function password() {
+		$this->load->view('login/password');
+		$email = $this->input->post('email');
+
+	}
+
+	public function newpassword() {
+		$data['users'] = $this->Usermodel->get_detail($a);
+		$this->load->view('login/newpassword', $data);
+
+	}
+
 }
